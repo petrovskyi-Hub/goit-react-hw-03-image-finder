@@ -8,6 +8,7 @@ import ApiService from './services/ApiService';
 import Button from './components/Button/Button';
 import Loader from './components/Loader/Loader';
 import Modal from './components/Modal/Modal';
+import Error from './components/Error/Error';
 
 class App extends Component {
   state = {
@@ -120,6 +121,7 @@ class App extends Component {
       isLoading,
       showModal,
       largeImageURL,
+      error,
     } = this.state;
 
     return (
@@ -129,6 +131,8 @@ class App extends Component {
           handleChange={this.handleChange}
           value={query}
         />
+
+        {error && <Error texterror={error} />}
 
         {images.length > 0 && (
           <ImageGallery images={images} onOpenModal={this.onOpenModal} />
